@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+  
+</br>
+</br>
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Task</th>
+        <th scope="col">Done</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+   
+  
+  {% for oj in call_objs %}
+  <tr class="table-success">
+    <th scope="row">{{ oj.id }}</th>
+    <td>{{ oj.task }}</td>
+    <td>Completed</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+    <td>Edit</td>
+    <td>Delete</td>
+   <!-- <td>@mdo</td> -->
+  </tr>
+ 
+<!--</br>-->
+<!--{{ oj.task }} has value {{ oj.done }}-->
+  {% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+
+
+

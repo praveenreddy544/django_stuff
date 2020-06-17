@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Edit Task - Taskmate</title>
+{% endblock title %}
+
+
+
+{%block content %}
+<div class="container">
+  <!--<h1>{{tasks_overall.task}}</h1>-->
+</br>
+{% if tasks_overall.managed_by_user == request.user %}
+  <form method="POST" class="row">
+      {% csrf_token %}
+      <!--<div class="form-group">-->
+        <label class="col-lg-2">Update your task</label>
+        <input type="text" name="task" class="form-control col-lg-6"  placeholder="{{tasks_overall.task}} ?" value="{{tasks_overall.task}}">
+        <input type="text" name="done"  value="{{tasks_overall.done}}"> 
+        <!-- above text value if you change to hidden , then it will disapper from view-->
+      <!--</div>-->
+      <button type="submit" class="btn btn-primary col-lg-2">Update task</button>
+    </form>
+ {% else %}
+     <p> Access restricted to only that user</p>
+  {% endif %}
+
+
+{% endblock content %}
+
+

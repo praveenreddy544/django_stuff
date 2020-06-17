@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+  <h1>{{welcome_texting}}</h1>
+</br>
+
+{% if messages %}
+{% for mesg in messages %}
+
+<div class="alert alert-success  alert-dismissible fade show" role="alert">
+  {{ mesg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% endfor %}
+{% endif %}
+</br>
+ <!-- <form method="POST">-->
+  <form method="POST" class="row">
+    {% csrf_token %}
+    <!--<div class="form-group">-->
+      <label class="col-lg-4">What course to add?</label>
+      <input type="text" name="task" class="form-control col-lg-6"  placeholder="Add Task?">
+    <!--</div>-->
+    <button type="submit" class="btn btn-primary col-lg-2">Submit</button>
+  </form>
+</br>
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered text-center">
+    <thead class="thead-dark">
+      <tr class="row">
+        <th class="col-5">id</th>
+        <th class="col-3">Task</th>
+        <th class="col-2">Done</th>
+        <th class="col-1">Edit</th>
+        <th class="col-1">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+   
+  {% if tasks_overall %}
+  {% for oj in tasks_overall %}
+  {% if oj.done %}
+  <tr class="table-success">
+    <th scope="row">{{ oj.id }}</th>
+    <td><del>{{ oj.task }}</del></td>
+    <td><a href="{% url 'pendingid' oj.id %}"><button type="button" class="btn btn-outline-success">Completed</button></a></td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+    <td><a href="{% url 'edittaskid' oj.id %}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td>
+    <td><a href="{% url 'deletetaskid' oj.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+   <!-- <td>@mdo</td> -->
+  </tr>
+  {% else %}
+  <tr>
+    <th scope="row">{{ oj.id }}</th>
+    <td>{{ oj.task }}</td>
+    <td><a href="{% url 'completeid' oj.id %}"><button type="button" class="btn btn-dark">Not Completed</button></a></td>
+    <td><a href="{% url 'edittaskid' oj.id %}"><button type="button" class="btn btn-outline-warning">Edit</button></a></td>
+    <td><a href="{% url 'deletetaskid' oj.id %}"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+   <!-- <td>@mdo</td> -->
+  </tr>
+<!--</br>-->
+<!--{{ oj.task }} has value {{ oj.done }}-->
+{% endif %}
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item"><a class="page-link" href="?pg=1"><<</a></li>
+    {% if tasks_overall.has_previous %}
+      <li class="page-item"><a class="page-link" href="?pg={{tasks_overall.previous_page_number}}">{{tasks_overall.previous_page_number}}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?pg={{tasks_overall.number}}">{{tasks_overall.number}}</a></li>
+    {% if tasks_overall.has_next %}
+      <li class="page-item"><a class="page-link" href="?pg={{tasks_overall.next_page_number}}">{{tasks_overall.next_page_number}}</a></li>
+    {% endif %}
+    <li class="page-item"><a class="page-link" href="?pg={{tasks_overall.paginator.num_pages}}">>></a></li>
+  </ul>
+</nav>
+</div>
+{% endblock %}
+
+
+

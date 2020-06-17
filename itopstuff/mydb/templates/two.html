@@ -1,0 +1,94 @@
+{% extends 'one.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+  <h1>{{wtext}}</h1>
+</br>
+
+
+</br>
+  
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+       <!---- <th scope="col">id</th> -->
+        <th scope="col" style="white-space:pre">name</th>
+        <th scope="col" style="white-space:pre">description</th>
+        <th scope="col" style="white-space:pre">Server OS</th>
+        <th scope="col">osversion_id</th>
+        <th scope="col" style="white-space:pre">Project Name</th>
+        <th scope="col" style="white-space:pre">Application Info</th>
+        <!--<th scope="col">osversion_id</th> -->
+        <th scope="col">cpu</th>
+        <th scope="col">ram</th>
+        <th scope="col">assignedipsinfo</th>
+        <th scope="col">notes</th>
+      </tr>
+    </thead>
+    <tbody>
+     <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+   
+  {% if tasks_overall %}
+  {% for oj in tasks_overall %}
+  {% if oj.done %}
+  <tr class="table">
+    <th scope="row">{{ oj.name }}</th>
+
+    <td>{{ oj.description }}</td>
+    <td>{{ oj.osfamily_name }}</td>
+    <td>{{ oj.osversion_name }}</td>
+    <td>{{ oj.projname }}</td>
+    <td>{{ oj.appinfo }}</td>
+    <td>{{ oj.cpu }}</td>
+    <td>{{ oj.ram }}</td>
+    <td>{{ oj.assignedipsinfo }}</td>
+    <td style="white-space:pre">{{ oj.notes }}</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+   <!-- <td>@mdo</td> -->
+  </tr>
+  {% else %}
+  <tr class="table table-sm">
+    <th scope="row">{{ oj.name }}</th>
+
+    <td>{{ oj.description }}</td>
+    <td>{{ oj.osfamily_name }}</td>
+    <td>{{ oj.osversion_name }}</td>
+
+    <td>{{ oj.projname }}</td>
+    <td>{{ oj.appinfo }}</td>
+    <td>{{ oj.cpu }}</td>
+    <td>{{ oj.ram }}</td>
+    <td>{{ oj.assignedipsinfo }}</td>
+    <td style="white-space:pre">{{ oj.notes }}</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+   <!-- <td>@mdo</td> -->
+  </tr>
+<!--</br>-->
+<!--{{ oj.task }} has value {{ oj.done }}-->
+{% endif %}
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+</div>
+{% endblock %}

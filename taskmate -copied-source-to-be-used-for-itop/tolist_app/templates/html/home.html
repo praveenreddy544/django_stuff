@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+  <h1>{{welcome_texting}}</h1>
+</br>
+
+{% if messages %}
+{% for mesg in messages %}
+
+<div class="alert alert-success  alert-dismissible fade show" role="alert">
+  {{ mesg }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+{% endfor %}
+{% endif %}
+</br>
+ <!-- <form method="POST">-->
+  <form method="POST" class="row">
+    {% csrf_token %}
+    <!--<div class="form-group">-->
+      <label class="col-lg-4">What course to add?</label>
+      <input type="text" name="task" class="form-control col-lg-6"  placeholder="Add Task?">
+    <!--</div>-->
+    <button type="submit" class="btn btn-primary col-lg-2">Submit</button>
+  </form>
+</br>
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Task</th>
+        <th scope="col">Done</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     <!-- <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr> -->
+   
+  {% if tasks_overall %}
+  {% for oj in tasks_overall %}
+  {% if oj.done %}
+  <tr class="table-success">
+    <th scope="row">{{ oj.id }}</th>
+    <td>{{ oj.task }}</td>
+    <td>Completed</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+    <td>Edit</td>
+    <td><a href="{% url 'deletetaskid' oj.id %}">Delete</a></td>
+   <!-- <td>@mdo</td> -->
+  </tr>
+  {% else %}
+  <tr>
+    <th scope="row">{{ oj.id }}</th>
+    <td>{{ oj.task }}</td>
+    <td>Not Completed</td>
+    <td>Edit</td>
+    <td><a href="{% url 'deletetaskid' oj.id %}">Delete</a></td>
+   <!-- <td>@mdo</td> -->
+  </tr>
+<!--</br>-->
+<!--{{ oj.task }} has value {{ oj.done }}-->
+{% endif %}
+  {% endfor %}
+{% endif %}
+</tbody>
+</table>
+</div>
+{% endblock %}
+
+
+

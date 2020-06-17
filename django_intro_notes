@@ -1,0 +1,23 @@
+## https://learning.oreilly.com/videos/django-a-z-learn/9781839213960/9781839213960-video3_4  (very good videos for django)
+
+### To create venv in python , just install "pip3 install virtual env", after that do "python -m venv <env_name>", then activate using "<venv_name>/Scirpts/activat
+## credits to https://learning.oreilly.com/videos/django-a-z-learn/9781839213960/9781839213960-video3_1
+
+## install django pip modules using pip install django (this pulls down django and install)
+
+## go to your desired directory and then, django-admin startproject <projectname>
+
+## Inside yoru project(created in earlier step), there will be various required files
+
+## Look at your poejct files created by django-admin, to know what are they ### research like use of settings.py ,wsgi.py, etc
+
+## After taking a look, run your server using "go to project path where your  manage.py is there and run python manage.py runserver"
+
+## For first time, since you specified sqlite3 in your settings.py, when you run app will be started making note about mgirations, so to get rid of that migrations message, use
+
+## python manage.py  makemigrations and python manage.py migrate
+
+## These mgrations were related to installed_app in settinsg.py that does some pre-configuratio by django (If you need proof, use db browser sqlite3 or navigate 
+## to that database and see tables that were created )
+
+##  

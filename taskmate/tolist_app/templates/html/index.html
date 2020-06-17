@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  <title>Index page</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-4">
+         <img class="shadow" src="{% static 'images/note.jpg' %}" alt="Notes" width="250" height="250">
+        </div>
+        <div class="col-lg-4">
+            <img class="shadow" src="{% static 'images/note.jpg' %}" alt="Notes" width="250" height="250">
+        </div>
+        <div class="col-lg-4">
+            <img class="shadow" src="{% static 'images/note.jpg' %}" alt="Notes" width="250" height="250">
+        </div>
+      </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6 offset-md-3">
+           <center><p class= "h1 text-primary">Image1</p></center>
+           <center><p class="h1 text-primary">Image2</p></center> 
+           <center><p class="h1 text-primary">Image3</p></center> 
+          <center><a href="{% url 'home_page' %}"> <button type="button" class="btn btn-primary btn-lg shadow">Large button</button></a></center>
+        </div>
+    </div>
+  <h1>{{cnt_texting}}</h1>
+</div>
+{% endblock %}

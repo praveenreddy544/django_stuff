@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Login User- Taskmate</title>
+{% endblock title %}
+
+{%block content %}
+<div class="container">
+    <h1>Login Form</h1>
+    {% if messages %}
+    {% for mesg in messages %}
+    
+    <div class="alert alert-success  alert-dismissible fade show" role="alert">
+       {{ mesg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+  <!--<h1>{{abo_texting}}</h1>-->
+   <form method="POST" class="mt-5 col-4">
+    {% csrf_token %}
+          <!-- {{ regform.as_p }} -->
+           {{ form|crispy }}
+    <center><button type="submit" class="btn btn-primary mt-5">Login</button></center>
+    </form>
+<!--<p> regs doit page</p>  -->
+
+
+</div>
+{% endblock %}
