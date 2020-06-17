@@ -13,6 +13,7 @@ decorator==4.4.1
 defusedxml==0.6.0
 Django==3.0.7
 django-crispy-forms==1.9.1
+django-environ==0.4.5
 docutils==0.15.2
 dominate==2.4.0
 entrypoints==0.3
