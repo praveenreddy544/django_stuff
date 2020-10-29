@@ -1,0 +1,14 @@
+data for test
+
+{% if tasks_overall %}
+<tr class="table"></tr>
+{% for oj in tasks_overall %}
+
+<td>{{ oj.servername }}</td>
+<td>{{ oj.fqdn }}</td>
+<td>{{ oj.patchversion }}</td>
+<td>{{ oj.osversion }}</td>
+<td>{{ oj.updatesavailablecount }}</td>
+</tr>
+{% endfor %}
+{% endif %}

@@ -1,0 +1,114 @@
+{% extends 'one.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+
+
+{%block content %}
+<div class="container">
+  <h1>{{wtext}}</h1>
+</br>
+
+
+</br>
+  
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+       <!---- <th scope="col">id</th> -->
+        <th scope="col" style="white-space:pre">id</th>
+        <th scope="col" style="white-space:pre">servername</th>
+        <th scope="col" style="white-space:pre">fqdn</th>
+        <th scope="col">patchversion</th>
+        <th scope="col" style="white-space:pre">osversion</th>
+        <th scope="col" style="white-space:pre">updatesavailablecount</th>
+        <!--<th scope="col">osversion_id</th> -->
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% if tasks_overall %}
+        {% for oj in tasks_overall %}
+        <tr>
+        <th scope="row">{{ oj.id }}</th>
+        <td>{{ oj.servername }}</td>
+        <td>{{ oj.fqdn }}</td>
+        <td>{{ oj.patchversion }}</td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+      </tbody>
+      </table>
+      </div>
+      {% endblock %}
+
+      <!--<tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+        <td>@twitter</td>
+      </tr>
+      <!--{% if tasks_overall %}
+      {% for oj in tasks_overall %}
+      
+      <h1>{{ oj.servername }}</h1>
+      <h1>{{ oj.fqdn }}</h1>
+      <h1>{{ oj.patchversion }}</h1>
+      <h1>{{ oj.osversion }}</h1>
+      <h1>{{ oj.updatesavailablecount }}</h1>
+      
+      {% endfor %}
+      {% endif %}-->
+
+  <!--{% if tasks_overall %}
+  {% for oj in tasks_overall %}
+  <!--{% if oj.done %} -->
+  <!--<tr class="table">
+    <!--<th scope="row">{{ oj.id }}</th>-->
+
+   <!-- <td>{{ oj.servername }}</td>
+    <td>{{ oj.fqdn }}</td>
+    <td>{{ oj.patchversion }}</td>
+    <td>{{ oj.osversion }}</td>
+    <td>{{ oj.updatesavailablecount }}</td>
+    <!--<td>{{ oj.cpu }}</td>
+    <td>{{ oj.ram }}</td>
+    <td>{{ oj.assignedipsinfo }}</td>
+    <td style="white-space:pre">{{ oj.notes }}</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+   <!-- <td>@mdo</td> -->
+  <!--</tr> -->
+ <!-- {% else %}
+  <tr class="table table-sm">
+    <th scope="row">{{ oj.name }}</th>
+
+    <td>{{ oj.description }}</td>
+    <td>{{ oj.osfamily_name }}</td>
+    <td>{{ oj.osversion_name }}</td>
+
+    <td>{{ oj.projname }}</td>
+    <td>{{ oj.appinfo }}</td>
+    <td>{{ oj.cpu }}</td>
+    <td>{{ oj.ram }}</td>
+    <td>{{ oj.assignedipsinfo }}</td>
+    <td style="white-space:pre">{{ oj.notes }}</td> <!--- Here , we are directly comparing Done value if its true, then completed -->
+   <!-- <td>@mdo</td> -->
+  <!--</tr>-->
+<!--</br>-->
+<!--{{ oj.task }} has value {{ oj.done }}-->
+<!--{% endif %}-->
+  <!--{% endfor %}
+{% endif %}
+</tbody>
+</table>
+</div>
+<!--{% endblock %} -->
