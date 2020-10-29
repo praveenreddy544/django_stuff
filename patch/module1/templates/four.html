@@ -1,0 +1,54 @@
+{% extends 'one.html' %}
+{% block title %}
+  <title>Home Page</title>
+{% endblock title %}
+
+
+
+{%block content %}
+<div class="container">
+  <h1>{{wtext}}</h1>
+</br>
+
+
+</br>
+  
+  
+  <!--<h1> you called {{ tasks_overall }}</h1> -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+       <!---- <th scope="col">id</th> -->
+        <!--<th scope="col" style="white-space:pre">id</th>-->
+        <th scope="col" style="white-space:pre">servername</th>
+        <th scope="col" style="white-space:pre">fqdn</th>
+        <th scope="col">patchversion</th>
+        <th scope="col" style="white-space:pre">osversion</th>
+        <th scope="col" style="white-space:pre">updatesavailablecount</th>
+        <th scope="col" style="white-space:pre">listing</th>
+        <!--<th scope="col">osversion_id</th> -->
+        
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% if tasks_overall %}
+        {% for oj in tasks_overall %}
+        <tr>
+        <!--<th scope="row">{{ oj.id }}</th>-->
+        <th scope="row">{{ oj.servername}}</th>
+        <!--<td>{{ oj.servername }}</td>-->
+        <td>{{ oj.fqdn }}</td>
+        <td>{{ oj.patchversion }}</td>
+        <td>{{ oj.osversion }}</td>
+        <td>{{ oj.updatesavailablecount }}</td>
+        <td>{{ oj.updateslist }}</td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+      </tbody>
+      </table>
+      </div>
+      {% endblock %}
+
+   

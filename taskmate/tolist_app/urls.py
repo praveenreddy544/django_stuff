@@ -7,6 +7,7 @@ urlpatterns = [
     path('home',views.chintulist,name='home_page'),
     #path('contact',views.contactlist,name='contact_page'),
     #path('about',views.aboutlist,name='about_page'),
+    #path('find',views.chintulist,name='find_page'),
     path('find',views.chintulist,name='find_page'),
     path('delete/<task_id>',views.deletelist,name='deletetaskid'),
     path('edit/<task_id>',views.editlist,name='edittaskid'),
